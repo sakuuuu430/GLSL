@@ -16,8 +16,8 @@ float rnd(vec2 n) {
 
 void main() {
   vec4 samplerColor = texture2D(textureUnit, vTexCoord);
-  float height = rnd(vec2(floor(time), floor(vTexCoord.y * blockLength)));
-  vec2 signedCoord = vec2(height, 0.);
+  float x = rnd(vec2(floor(time * 2.), floor(vTexCoord.y * blockLength)));
+  vec2 signedCoord = vec2(x, 0);
   float n = rnd(vec2(signedCoord));
-  gl_FragColor = texture2D(textureUnit, vTexCoord + signedCoord * strength * mix(-1., 1., step(0.5,n)));
+  gl_FragColor = texture2D(textureUnit, vTexCoord + signedCoord * strength * mix(-1., 1., step(0.5, n)));
 }
